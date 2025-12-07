@@ -41,5 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
+<!-- Developed by EchoMedia -->
 </body>
 </html>

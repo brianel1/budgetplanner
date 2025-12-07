@@ -1,0 +1,657 @@
+/* ============================================
+   BudgetPlanner - 60/40 Two-Color Design System
+   Primary (60%): Deep Blue #206bc4
+   Secondary (40%): Teal/Cyan #0ca678
+   ============================================ */
+
+/* Custom Properties - 60/40 Color Palette */
+:root {
+    /* Primary Color (60%) - Deep Blue */
+    --bp-primary: #206bc4;
+    --bp-primary-dark: #1a569d;
+    --bp-primary-light: #4299e1;
+    --bp-primary-bg: #e7f1ff;
+    
+    /* Secondary Color (40%) - Teal */
+    --bp-secondary: #0ca678;
+    --bp-secondary-dark: #099268;
+    --bp-secondary-light: #20c997;
+    --bp-secondary-bg: #e6fcf5;
+    
+    /* Neutrals */
+    --bp-dark: #1e293b;
+    --bp-gray: #64748b;
+    --bp-light: #f8fafc;
+    --bp-white: #ffffff;
+    
+    /* Semantic Colors */
+    --bp-success: #0ca678;
+    --bp-danger: #d63939;
+    --bp-warning: #f59f00;
+    
+    /* Typography */
+    --tblr-font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ============================================
+   Global Overrides - Primary Color Dominance (60%)
+   ============================================ */
+
+/* Sidebar - Primary Color */
+.navbar-vertical {
+    background: linear-gradient(180deg, var(--bp-primary-dark) 0%, var(--bp-primary) 100%) !important;
+}
+
+.navbar-vertical .navbar-brand {
+    color: var(--bp-white) !important;
+}
+
+.navbar-vertical .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+    border-radius: 8px;
+    margin: 2px 8px;
+    transition: all 0.2s ease;
+}
+
+.navbar-vertical .nav-link:hover {
+    color: var(--bp-white) !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-vertical .nav-link.active {
+    color: var(--bp-white) !important;
+    background: var(--bp-secondary) !important;
+    font-weight: 600;
+}
+
+.navbar-vertical .nav-link-icon {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar-vertical .nav-link.active .nav-link-icon,
+.navbar-vertical .nav-link:hover .nav-link-icon {
+    color: var(--bp-white);
+}
+
+/* Page Header */
+.page-header {
+    background: var(--bp-white);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.page-title {
+    color: var(--bp-dark);
+    font-weight: 700;
+}
+
+/* ============================================
+   Buttons - 60/40 Split
+   ============================================ */
+
+/* Primary Buttons (60%) */
+.btn-primary {
+    background: var(--bp-primary) !important;
+    border-color: var(--bp-primary) !important;
+    box-shadow: 0 2px 4px rgba(32, 107, 196, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--bp-primary-dark) !important;
+    border-color: var(--bp-primary-dark) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(32, 107, 196, 0.4);
+}
+
+/* Secondary/Accent Buttons (40%) */
+.btn-secondary,
+.btn-success {
+    background: var(--bp-secondary) !important;
+    border-color: var(--bp-secondary) !important;
+    box-shadow: 0 2px 4px rgba(12, 166, 120, 0.3);
+}
+
+.btn-secondary:hover,
+.btn-success:hover {
+    background: var(--bp-secondary-dark) !important;
+    border-color: var(--bp-secondary-dark) !important;
+}
+
+.btn-outline-primary {
+    color: var(--bp-primary);
+    border-color: var(--bp-primary);
+}
+
+.btn-outline-primary:hover {
+    background: var(--bp-primary);
+    border-color: var(--bp-primary);
+    color: var(--bp-white);
+}
+
+.btn-outline-secondary {
+    color: var(--bp-secondary);
+    border-color: var(--bp-secondary);
+}
+
+.btn-outline-secondary:hover {
+    background: var(--bp-secondary);
+    border-color: var(--bp-secondary);
+    color: var(--bp-white);
+}
+
+/* ============================================
+   Cards - Clean with Accent Borders
+   ============================================ */
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.4s ease forwards;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-weight: 600;
+}
+
+.card-title {
+    color: var(--bp-dark);
+    font-weight: 600;
+}
+
+/* ============================================
+   Stat Cards - 60/40 Color Distribution
+   ============================================ */
+
+.stat-card {
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid transparent;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    opacity: 0.1;
+    transform: translate(30%, -30%);
+}
+
+/* Income - Secondary Color (Teal) */
+.stat-card.income {
+    border-left-color: var(--bp-secondary);
+}
+
+.stat-card.income::before {
+    background: var(--bp-secondary);
+}
+
+.stat-card.income .h1,
+.stat-card.income .avatar {
+    color: var(--bp-secondary) !important;
+}
+
+.stat-card.income .avatar {
+    background: var(--bp-secondary-bg) !important;
+}
+
+/* Expense - Danger */
+.stat-card.expense {
+    border-left-color: var(--bp-danger);
+}
+
+.stat-card.expense::before {
+    background: var(--bp-danger);
+}
+
+/* Balance - Primary Color (Blue) */
+.stat-card.balance {
+    border-left-color: var(--bp-primary);
+}
+
+.stat-card.balance::before {
+    background: var(--bp-primary);
+}
+
+.stat-card.balance .h1 {
+    color: var(--bp-primary) !important;
+}
+
+.stat-card.balance .avatar {
+    background: var(--bp-primary-bg) !important;
+    color: var(--bp-primary) !important;
+}
+
+/* ============================================
+   Badges & Labels - 60/40 Distribution
+   ============================================ */
+
+.badge.bg-primary,
+.badge.bg-primary-lt {
+    background: var(--bp-primary-bg) !important;
+    color: var(--bp-primary) !important;
+}
+
+.badge.bg-success,
+.badge.bg-success-lt {
+    background: var(--bp-secondary-bg) !important;
+    color: var(--bp-secondary) !important;
+}
+
+/* ============================================
+   Progress Bars
+   ============================================ */
+
+.progress {
+    background: var(--bp-light);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    border-radius: 10px;
+}
+
+.progress-bar.bg-primary {
+    background: linear-gradient(90deg, var(--bp-primary) 0%, var(--bp-primary-light) 100%) !important;
+}
+
+.progress-bar.bg-success {
+    background: linear-gradient(90deg, var(--bp-secondary) 0%, var(--bp-secondary-light) 100%) !important;
+}
+
+/* ============================================
+   Avatars - Color Coded
+   ============================================ */
+
+.avatar.bg-primary-lt {
+    background: var(--bp-primary-bg) !important;
+    color: var(--bp-primary) !important;
+}
+
+.avatar.bg-success-lt {
+    background: var(--bp-secondary-bg) !important;
+    color: var(--bp-secondary) !important;
+}
+
+/* ============================================
+   Form Elements
+   ============================================ */
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--bp-primary);
+    box-shadow: 0 0 0 3px rgba(32, 107, 196, 0.15);
+}
+
+.form-selectgroup-input:checked + .form-selectgroup-label {
+    border-color: var(--bp-primary);
+    background: var(--bp-primary-bg);
+}
+
+.form-selectgroup-check {
+    border-color: var(--bp-primary);
+}
+
+.form-selectgroup-input:checked + .form-selectgroup-label .form-selectgroup-check {
+    background: var(--bp-primary);
+    border-color: var(--bp-primary);
+}
+
+/* ============================================
+   Tables
+   ============================================ */
+
+.table thead th {
+    background: var(--bp-light);
+    color: var(--bp-gray);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.table-hover tbody tr:hover {
+    background: var(--bp-primary-bg);
+}
+
+/* ============================================
+   Alerts
+   ============================================ */
+
+.alert-success {
+    background: var(--bp-secondary-bg);
+    border-color: var(--bp-secondary);
+    color: var(--bp-secondary-dark);
+}
+
+.alert-primary {
+    background: var(--bp-primary-bg);
+    border-color: var(--bp-primary);
+    color: var(--bp-primary-dark);
+}
+
+/* ============================================
+   Links & Text Colors
+   ============================================ */
+
+a {
+    color: var(--bp-primary);
+}
+
+a:hover {
+    color: var(--bp-primary-dark);
+}
+
+.text-primary {
+    color: var(--bp-primary) !important;
+}
+
+.text-success {
+    color: var(--bp-secondary) !important;
+}
+
+/* ============================================
+   Empty States
+   ============================================ */
+
+.empty-icon {
+    color: var(--bp-primary);
+    opacity: 0.5;
+}
+
+.empty-icon i {
+    font-size: 4rem;
+}
+
+/* ============================================
+   Auth Pages - Gradient Background
+   ============================================ */
+
+.page-center {
+    background: linear-gradient(135deg, var(--bp-primary-bg) 0%, var(--bp-secondary-bg) 100%);
+    min-height: 100vh;
+}
+
+.page-center .card {
+    border-top: 4px solid var(--bp-primary);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   Dropdown Menus
+   ============================================ */
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background: var(--bp-primary-bg);
+    color: var(--bp-primary);
+}
+
+.dropdown-item.active {
+    background: var(--bp-primary);
+    color: var(--bp-white);
+}
+
+/* ============================================
+   List Groups
+   ============================================ */
+
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.list-group-item:hover {
+    background: var(--bp-light);
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.stat-card .avatar {
+    animation: pulse 2s infinite;
+}
+
+/* Stagger animations */
+.row > [class*="col-"]:nth-child(1) .card { animation-delay: 0.05s; }
+.row > [class*="col-"]:nth-child(2) .card { animation-delay: 0.1s; }
+.row > [class*="col-"]:nth-child(3) .card { animation-delay: 0.15s; }
+.row > [class*="col-"]:nth-child(4) .card { animation-delay: 0.2s; }
+
+.list-group-item {
+    animation: fadeInUp 0.3s ease forwards;
+}
+
+.list-group-item:nth-child(1) { animation-delay: 0.05s; }
+.list-group-item:nth-child(2) { animation-delay: 0.1s; }
+.list-group-item:nth-child(3) { animation-delay: 0.15s; }
+.list-group-item:nth-child(4) { animation-delay: 0.2s; }
+.list-group-item:nth-child(5) { animation-delay: 0.25s; }
+
+/* ============================================
+   Custom Scrollbar
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bp-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bp-gray);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bp-primary);
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+
+.footer {
+    background: var(--bp-light);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.footer a {
+    color: var(--bp-primary);
+}
+
+/* ============================================
+   Budget Cards - Special Styling
+   ============================================ */
+
+.budget-card {
+    border-left: 3px solid var(--bp-secondary);
+}
+
+.budget-card:hover {
+    border-left-color: var(--bp-primary);
+}
+
+/* ============================================
+   Quick Actions Card
+   ============================================ */
+
+.card .btn-primary {
+    background: linear-gradient(135deg, var(--bp-primary) 0%, var(--bp-primary-light) 100%) !important;
+    border: none !important;
+}
+
+.card .btn-outline-primary:hover {
+    background: linear-gradient(135deg, var(--bp-primary) 0%, var(--bp-primary-light) 100%);
+}
+
+.card .btn-outline-secondary:hover {
+    background: linear-gradient(135deg, var(--bp-secondary) 0%, var(--bp-secondary-light) 100%);
+}
+
+/* ============================================
+   Category Cards - Color Coded Headers
+   ============================================ */
+
+.card-header.bg-success-lt {
+    background: var(--bp-secondary-bg) !important;
+    border-bottom: 2px solid var(--bp-secondary);
+}
+
+.card-header.bg-danger-lt {
+    border-bottom: 2px solid var(--bp-danger);
+}
+
+/* ============================================
+   Datagrid Enhancement
+   ============================================ */
+
+.datagrid-title {
+    color: var(--bp-gray);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.datagrid-content {
+    color: var(--bp-dark);
+    font-weight: 600;
+}
+
+/* ============================================
+   Modal Enhancements
+   ============================================ */
+
+.modal-content {
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+.modal-status.bg-danger {
+    background: linear-gradient(90deg, var(--bp-danger) 0%, #e74c3c 100%) !important;
+}
+
+.modal-status.bg-primary {
+    background: linear-gradient(90deg, var(--bp-primary) 0%, var(--bp-primary-light) 100%) !important;
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+
+@media (max-width: 768px) {
+    .page-header-content {
+        padding: 1rem 0;
+    }
+    
+    .stat-card {
+        margin-bottom: 0.5rem;
+    }
+    
+    .navbar-vertical {
+        background: var(--bp-primary) !important;
+    }
+}
+
+/* ============================================
+   Profile Page Enhancements
+   ============================================ */
+
+.avatar-xl {
+    background: linear-gradient(135deg, var(--bp-primary) 0%, var(--bp-secondary) 100%) !important;
+    color: var(--bp-white) !important;
+}
+
+.card.border-danger {
+    border-color: var(--bp-danger) !important;
+}
+
+.card-status-top.bg-danger {
+    background: linear-gradient(90deg, var(--bp-danger) 0%, #e74c3c 100%) !important;
+}
+
+/* ============================================
+   Reports Page - Chart Colors
+   ============================================ */
+
+.bg-blue { background: var(--bp-primary) !important; }
+.bg-azure { background: #4299e1 !important; }
+.bg-indigo { background: #6366f1 !important; }
+.bg-purple { background: #8b5cf6 !important; }
+.bg-pink { background: #ec4899 !important; }
+.bg-red { background: var(--bp-danger) !important; }
+.bg-orange { background: #f97316 !important; }
+.bg-yellow { background: var(--bp-warning) !important; }
+.bg-lime { background: #84cc16 !important; }
+.bg-green { background: var(--bp-secondary) !important; }
+.bg-teal { background: #14b8a6 !important; }
+.bg-cyan { background: #06b6d4 !important; }
+
+.text-blue { color: var(--bp-primary) !important; }
+.text-green { color: var(--bp-secondary) !important; }
+
+
+/* ============================================
+   Layout Fixes
+   ============================================ */
+
+/* Fix for nested row-cards inside row-deck */
+.row-deck > .col-lg-4 > .row-cards {
+    height: auto !important;
+}
+
+.row-deck > .col-lg-4 > .row-cards > .col-12 {
+    margin-bottom: 1rem;
+}
+
+.row-deck > .col-lg-4 > .row-cards > .col-12:last-child {
+    margin-bottom: 0;
+}
+
+/* Ensure cards don't stretch weirdly */
+.row-deck .card {
+    height: auto;
+}
+
+/* Fix card hover effect not to break layout */
+.card:hover {
+    transform: translateY(-2px);
+}

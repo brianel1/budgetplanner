@@ -1,0 +1,82 @@
+CARA PAKAI BUDGET PLANNER
+=========================
+
+CARA RUN PROJECT
+----------------
+1. Pastikan XAMPP dah install dan running (Apache + MySQL)
+
+2. Setup Database:
+   - Buka phpMyAdmin (http://localhost/phpmyadmin)
+   - Create database baru nama "budget_planner"
+   - Import file "database.sql" yang ada dalam folder project
+
+3. Config Database:
+   - Buka file config/database.php
+   - Tukar username/password kalau perlu (default: root, password kosong)
+
+4. Run Project:
+   - Copy folder project ke htdocs (C:\xampp\htdocs\BudgetPlanner)
+   - Buka browser, pergi ke: http://localhost/BudgetPlanner/public/
+   - Atau guna PHP built-in server:
+     * Buka terminal/cmd
+     * cd ke folder public
+     * Run: php -S localhost:8000
+     * Buka browser: http://localhost:8000
+
+5. First Time:
+   - Klik "Sign Up" untuk daftar akaun baru
+   - Lepas daftar, login dengan email & password
+
+
+CARA GUNA SISTEM
+================
+
+1. USER (Pengguna)
+------------------
+- Daftar akaun baru: Page "Sign Up" (klik link kat bawah login)
+- Login: Page "Login" (page pertama bila buka web)
+- Edit profil: Sidebar > "Profile" (boleh tukar nama & email)
+- Padam akaun: Sidebar > "Profile" > scroll bawah > klik "Delete Account"
+
+2. CATEGORY (Kategori)
+----------------------
+- Tengok semua kategori: Sidebar > "Categories"
+- Tambah kategori baru: Page Categories > klik button "Add Category"
+- Edit kategori: Page Categories > klik icon pensil
+- Padam kategori: Page Categories > klik icon tong sampah
+
+3. TRANSACTION (Transaksi)
+--------------------------
+- Tengok semua transaksi: Sidebar > "Transactions"
+- Tambah transaksi baru: Page Transactions > klik button "Add Transaction"
+- Edit transaksi: Page Transactions > klik menu titik tiga > "Edit"
+- Padam transaksi: Page Transactions > klik menu titik tiga > "Delete"
+
+4. BUDGET (Bajet)
+-----------------
+- Tengok semua bajet: Sidebar > "Budgets"
+- Tambah bajet baru: Page Budgets > klik button "Add Budget"
+- Edit bajet: Page Budgets > klik menu titik tiga > "Edit"
+- Padam bajet: Page Budgets > klik menu titik tiga > "Delete"
+- Boleh tengok progress bar berapa dah guna vs limit
+
+5. REPORTS (Laporan)
+--------------------
+- Tengok laporan: Sidebar > "Reports"
+- Pilih bulan guna dropdown kat atas
+- Ada breakdown expenses ikut kategori
+
+6. DASHBOARD
+------------
+- Tengok overview: Sidebar > "Dashboard"
+- Nampak total income, expenses, balance
+- Ada senarai recent transactions
+- Ada savings rate percentage
+
+
+NOTA PENTING
+============
+- Kena login dulu baru boleh guna semua feature
+- Sidebar ada kat sebelah kiri screen
+- Logout: Sidebar > "Logout" (warna merah)
+- Kalau ada error database, check balik config/database.php

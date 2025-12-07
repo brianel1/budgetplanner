@@ -1,0 +1,25 @@
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Kiro specs (optional - remove if you want to include)
+# .kiro/
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+
+# Vendor (if using composer)
+/vendor/
+
+# Node modules (if any)
+/node_modules/

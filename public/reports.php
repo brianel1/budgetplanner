@@ -191,74 +191,80 @@ require_once __DIR__ . '/../views/layouts/header.php';
     </div>
     
     <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">
-                    <i class="ti ti-report-analytics me-2"></i>Summary
-                </h3>
+        <div class="row">
+            <div class="col-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="ti ti-report-analytics me-2"></i>Summary
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <?php if (!empty($category_expenses)): ?>
+                            <div class="datagrid">
+                                <div class="datagrid-item">
+                                    <div class="datagrid-title">Total Categories</div>
+                                    <div class="datagrid-content"><?php echo count($category_expenses); ?></div>
+                                </div>
+                                <div class="datagrid-item">
+                                    <div class="datagrid-title">Highest Expense</div>
+                                    <div class="datagrid-content text-danger">
+                                        $<?php echo number_format($category_expenses[0]['total'] ?? 0, 2); ?>
+                                    </div>
+                                </div>
+                                <div class="datagrid-item">
+                                    <div class="datagrid-title">Top Category</div>
+                                    <div class="datagrid-content">
+                                        <?php echo htmlspecialchars($category_expenses[0]['category_name'] ?? 'N/A'); ?>
+                                    </div>
+                                </div>
+                                <div class="datagrid-item">
+                                    <div class="datagrid-title">Average per Category</div>
+                                    <div class="datagrid-content">
+                                        $<?php echo number_format($total_expenses / max(count($category_expenses), 1), 2); ?>
+                                    </div>
+                                </div>
+                                <div class="datagrid-item">
+                                    <div class="datagrid-title">Savings Rate</div>
+                                    <div class="datagrid-content <?php echo $net_balance >= 0 ? 'text-success' : 'text-danger'; ?>">
+                                        <?php 
+                                        $savings_rate = $total_income > 0 ? ($net_balance / $total_income) * 100 : 0;
+                                        echo number_format($savings_rate, 1) . '%';
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php else: ?>
+                            <div class="text-center text-secondary py-4">
+                                <i class="ti ti-chart-dots-3 mb-2" style="font-size: 2rem;"></i>
+                                <p class="mb-0">No data available</p>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <?php if (!empty($category_expenses)): ?>
-                    <div class="datagrid">
-                        <div class="datagrid-item">
-                            <div class="datagrid-title">Total Categories</div>
-                            <div class="datagrid-content"><?php echo count($category_expenses); ?></div>
-                        </div>
-                        <div class="datagrid-item">
-                            <div class="datagrid-title">Highest Expense</div>
-                            <div class="datagrid-content text-danger">
-                                $<?php echo number_format($category_expenses[0]['total'] ?? 0, 2); ?>
-                            </div>
-                        </div>
-                        <div class="datagrid-item">
-                            <div class="datagrid-title">Top Category</div>
-                            <div class="datagrid-content">
-                                <?php echo htmlspecialchars($category_expenses[0]['category_name'] ?? 'N/A'); ?>
-                            </div>
-                        </div>
-                        <div class="datagrid-item">
-                            <div class="datagrid-title">Average per Category</div>
-                            <div class="datagrid-content">
-                                $<?php echo number_format($total_expenses / max(count($category_expenses), 1), 2); ?>
-                            </div>
-                        </div>
-                        <div class="datagrid-item">
-                            <div class="datagrid-title">Savings Rate</div>
-                            <div class="datagrid-content <?php echo $net_balance >= 0 ? 'text-success' : 'text-danger'; ?>">
-                                <?php 
-                                $savings_rate = $total_income > 0 ? ($net_balance / $total_income) * 100 : 0;
-                                echo number_format($savings_rate, 1) . '%';
-                                ?>
-                            </div>
+            
+            <!-- Quick Actions -->
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="ti ti-bolt me-2"></i>Quick Actions
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a href="add_transaction.php" class="btn btn-primary">
+                                <i class="ti ti-plus me-2"></i>Add Transaction
+                            </a>
+                            <a href="budgets.php" class="btn btn-outline-secondary">
+                                <i class="ti ti-pig-money me-2"></i>Manage Budgets
+                            </a>
+                            <a href="transactions.php" class="btn btn-outline-secondary">
+                                <i class="ti ti-list me-2"></i>View All Transactions
+                            </a>
                         </div>
                     </div>
-                <?php else: ?>
-                    <div class="text-center text-secondary py-4">
-                        <i class="ti ti-chart-dots-3 mb-2" style="font-size: 2rem;"></i>
-                        <p class="mb-0">No data available</p>
-                    </div>
-                <?php endif; ?>
-            </div>
-        </div>
-        
-        <!-- Quick Actions -->
-        <div class="card mt-3">
-            <div class="card-header">
-                <h3 class="card-title">
-                    <i class="ti ti-bolt me-2"></i>Quick Actions
-                </h3>
-            </div>
-            <div class="card-body">
-                <div class="d-grid gap-2">
-                    <a href="add_transaction.php" class="btn btn-primary">
-                        <i class="ti ti-plus me-2"></i>Add Transaction
-                    </a>
-                    <a href="budgets.php" class="btn btn-outline-secondary">
-                        <i class="ti ti-pig-money me-2"></i>Manage Budgets
-                    </a>
-                    <a href="transactions.php" class="btn btn-outline-secondary">
-                        <i class="ti ti-list me-2"></i>View All Transactions
-                    </a>
                 </div>
             </div>
         </div>
